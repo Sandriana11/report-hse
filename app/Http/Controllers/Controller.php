@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
-class CheckboxController extends Controller
+class Controller extends BaseController
 {
-    public function submitCheckbox(Request $request)
-    {
-        // Ambil data dari checkbox
-        $ppe = $request->input('ppe', []);
-        $working_position = $request->input('working_position', []);
-        $ergonomic = $request->input('ergonomic', []);
-
-        // Contoh: menyimpan data ke database (sesuaikan dengan tabelmu)
-        // DB::table('checkbox_selections')->insert([...]);
-
-        return back()->with('success', 'Data berhasil disimpan!');
-    }
+    use AuthorizesRequests, ValidatesRequests;
 }

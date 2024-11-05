@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\HseChecklistController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +18,11 @@ Route::get('/', function () {
     return view('hse_form');
 });
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
+// Di LoginController
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Auth::routes();
 
-
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('hse_report', HseChecklistController::class);
+// Route::get('/hse_report/{id}', [HseChecklistController::class, 'show'])->name('hse_report.show');
+Route::get('hse_report/export', [HseChecklistController::class, 'exportToPDF'])->name('hse_report.export');
