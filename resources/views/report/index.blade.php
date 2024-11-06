@@ -41,6 +41,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('FORMULIR PEDULI HSE') }}</div>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -551,7 +556,8 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <button class="btn btn-primary btn-block"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
+                            <button class="btn btn-primary btn-block"><i class="fa-solid fa-floppy-disk"></i>
+                                Submit</button>
                         </div>
                     </form>
                 </div>
