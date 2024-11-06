@@ -35,17 +35,19 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo e(request()->is('home') ? 'active' : ''); ?>"aria-current="page" href="<?php echo e(route('home')); ?>">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo e(request()->is('hse_report') ? 'active' : ''); ?>"
-                                href="<?php echo e(route('hse_report.index')); ?>">Report</a>
-                        </li>
-                    </ul>
-
+                    <?php if(auth()->guard()->check()): ?>
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link <?php echo e(request()->is('home') ? 'active' : ''); ?>"aria-current="page"
+                                    href="<?php echo e(route('home')); ?>">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php echo e(request()->is('hse_report') ? 'active' : ''); ?>"
+                                    href="<?php echo e(route('hse_report.index')); ?>">Report</a>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
