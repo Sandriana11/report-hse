@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('hse_form');
+    return view('auth.login');
 });
 
 // Di LoginController
